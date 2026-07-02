@@ -145,12 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
         spring: [
             { id: "sp1", name: "Floral Dress", desc: "Beautiful flowy dress with spring floral patterns.", price: 450000, img: "images/outfit_sp1.png" },
             { id: "sp2", name: "Light Denim Jacket", desc: "Perfect outer layer for spring weather.", price: 350000, img: "images/denim_jacket.png" },
-            { id: "sp3", name: "Pastel Sneakers", desc: "Comfortable sneakers in soft pastel colors.", price: 500000, img: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=500&fit=crop" }
+            { id: "sp3", name: "Pastel Sneakers", desc: "Comfortable sneakers in soft pastel colors.", price: 500000, img: "images/season_sneakers pastel.png" }
         ],
         winter: [
-            { id: "w1", name: "Heavy Puffer Jacket", desc: "Thick insulated jacket for extreme cold.", price: 950000, img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop" },
+            { id: "w1", name: "Heavy Puffer Jacket", desc: "Thick insulated jacket for extreme cold.", price: 950000, img: "images/season_heavy puffer jacket.png" },
             { id: "w2", name: "Wool Scarf", desc: "Warm and cozy scarf made of 100% wool.", price: 180000, img: "images/wool_sweater.png" },
-            { id: "w3", name: "Thermal Gloves", desc: "Protect your hands from the freezing winter wind.", price: 120000, img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=500&fit=crop" }
+            { id: "w3", name: "Thermal Gloves", desc: "Protect your hands from the freezing winter wind.", price: 120000, img: "images/season_thermal gloves.png" }
         ]
     };
 
