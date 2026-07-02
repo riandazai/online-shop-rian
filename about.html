@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SULOVA STORE!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1509631179647-0c739a4f6cf6?fit=crop&w=1920&q=80') no-repeat center center/cover;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        /* Dark overlay for better text readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .about-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(25, 25, 25, 0.7);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .about-card h1 {
+            font-size: 2.2rem;
+            margin: 0 0 15px;
+            letter-spacing: 3px;
+            color: #d4af37; /* Gold color */
+            text-transform: uppercase;
+        }
+
+        .aesthetic-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .quote {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            color: #e0e0e0;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 14px 45px;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: #d4af37;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Aesthetic Fashion" class="aesthetic-img">
+        <h1>SULOVA STORE!</h1>
+        <p class="quote">"Inspired by the euphoric pulse of disco, pearls, denim, hearts reimagined in a fluid, instinctive wardrobe."</p>
+        <a href="index.html" class="back-btn" onclick="window.close();">Shop Now</a>
+    </div>
+</body>
+</html>

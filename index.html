@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Store | Katalog Pakaian Modern</title>
+    <title>SULOVA STORE! | Katalog Pakaian Modern</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome (Mock) -->
@@ -18,10 +18,10 @@
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <h1>Fashion<span>Store</span></h1>
+                <h1>SULOVA<span>STORE!</span></h1>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" target="_blank" title="Tentang Toko Kami">Home</a></li>
                 <li class="dropdown">
                     <a href="#collections" class="dropbtn">Collections <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="dropdown-content">
@@ -32,16 +32,21 @@
                     </div>
                 </li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" target="_blank" title="Hubungi Kami">Contact</a></li>
             </ul>
             <div class="nav-icons">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass" id="search-icon" style="cursor:pointer;"></i>
+                    <div class="search-box" id="search-box">
+                        <input type="text" id="search-input" placeholder="Cari nama baju...">
+                        <div class="search-results" id="search-results"></div>
+                    </div>
+                </div>
                 <div class="cart-icon-wrapper" id="cart-icon">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-count">0</span>
                 </div>
-                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user" id="profile-icon" style="cursor:pointer;"></i>
             </div>
             <div class="menu-toggle">
                 <i class="fa-solid fa-bars"></i>
@@ -64,25 +69,25 @@
             <h2 class="section-title">Seasonal Collections</h2>
             <div class="seasonal-grid">
                 <div class="seasonal-card" id="summer">
-                    <img src="https://loremflickr.com/600/800/summer,fashion/all" alt="Summer Collection">
+                    <img src="images/season_summer.png" alt="Summer Collection">
                     <div class="seasonal-overlay">
                         <h3>Summer Edit</h3>
                     </div>
                 </div>
                 <div class="seasonal-card" id="fall">
-                    <img src="https://loremflickr.com/600/800/fall,fashion/all" alt="Fall Collection">
+                    <img src="images/season_fall.jpeg" alt="Fall Collection">
                     <div class="seasonal-overlay">
                         <h3>Fall Classics</h3>
                     </div>
                 </div>
                 <div class="seasonal-card" id="spring">
-                    <img src="https://loremflickr.com/600/800/spring,fashion/all" alt="Spring Collection">
+                    <img src="images/season_spring.jpeg" alt="Spring Collection">
                     <div class="seasonal-overlay">
                         <h3>Spring Blossom</h3>
                     </div>
                 </div>
                 <div class="seasonal-card" id="winter">
-                    <img src="https://loremflickr.com/600/800/winter,fashion/all" alt="Winter Collection">
+                    <img src="images/season_winter.jpeg" alt="Winter Collection">
                     <div class="seasonal-overlay">
                         <h3>Winter Cozy</h3>
                     </div>
@@ -173,23 +178,23 @@
                 <!-- Product 7 -->
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="images/elegant_watch.jpg" alt="Elegant Watch">
+                        <img src="images/elegant_watch.png" alt="Elegant Watch">
                     </div>
                     <div class="product-info">
                         <h3>Elegant Men's Watch</h3>
                         <div class="price">Rp 850.000</div>
-                        <button class="add-to-cart-btn" data-id="7" data-name="Elegant Men's Watch" data-price="850000" data-img="images/elegant_watch.jpg">Add to Cart</button>
+                        <button class="add-to-cart-btn" data-id="7" data-name="Elegant Men's Watch" data-price="850000" data-img="images/elegant_watch.png">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Product 8 -->
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="images/leather_handbag.jpg" alt="Leather Handbag">
+                        <img src="images/leather_handbag.png" alt="Leather Handbag">
                     </div>
                     <div class="product-info">
                         <h3>Premium Leather Handbag</h3>
                         <div class="price">Rp 1.200.000</div>
-                        <button class="add-to-cart-btn" data-id="8" data-name="Premium Leather Handbag" data-price="1200000" data-img="images/leather_handbag.jpg">Add to Cart</button>
+                        <button class="add-to-cart-btn" data-id="8" data-name="Premium Leather Handbag" data-price="1200000" data-img="images/leather_handbag.png">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -223,8 +228,167 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div class="payment-overlay" id="payment-overlay"></div>
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-header">
+            <h2>Pilih Metode Pembayaran</h2>
+            <i class="fa-solid fa-xmark" id="close-payment"></i>
+        </div>
+        <div class="payment-summary" id="payment-summary">
+            <span>Total Pembayaran:</span>
+            <strong id="payment-total">Rp 0</strong>
+        </div>
+        <div class="payment-options">
+            <label class="payment-option">
+                <input type="radio" name="payment" value="bca">
+                <div class="option-content">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <div class="option-title">Transfer Bank BCA</div>
+                        <div class="option-sub">1234-5678-9012</div>
+                    </div>
+                </div>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment" value="gopay">
+                <div class="option-content">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <div>
+                        <div class="option-title">GoPay</div>
+                        <div class="option-sub">0812-3456-7890</div>
+                    </div>
+                </div>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment" value="ovo">
+                <div class="option-content">
+                    <i class="fa-solid fa-wallet"></i>
+                    <div>
+                        <div class="option-title">OVO</div>
+                        <div class="option-sub">0812-3456-7890</div>
+                    </div>
+                </div>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment" value="dana">
+                <div class="option-content">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <div>
+                        <div class="option-title">DANA</div>
+                        <div class="option-sub">0812-3456-7890</div>
+                    </div>
+                </div>
+            </label>
+            <label class="payment-option">
+                <input type="radio" name="payment" value="cod">
+                <div class="option-content">
+                    <i class="fa-solid fa-box"></i>
+                    <div>
+                        <div class="option-title">Cash on Delivery (COD)</div>
+                        <div class="option-sub">Bayar saat barang tiba</div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <button class="pay-btn" id="pay-btn" disabled>
+            <i class="fa-solid fa-lock"></i> Bayar Sekarang
+        </button>
+    </div>
+
+    <!-- Success Notification -->
+    <div class="success-notification" id="success-notification">
+        <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="success-text">
+            <h3>Congratulations on your purchase!</h3>
+            <p>Pesanan Anda sedang diproses. Terima kasih telah berbelanja di SULOVA STORE!</p>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
     <div id="toast" class="toast">Item ditambahkan ke keranjang!</div>
+
+    <!-- Profile Panel -->
+    <div class="profile-overlay" id="profile-overlay"></div>
+    <div class="profile-panel" id="profile-panel">
+        <div class="profile-panel-header">
+            <span>Akun Saya</span>
+            <i class="fa-solid fa-xmark" id="close-profile"></i>
+        </div>
+
+        <!-- View: Login -->
+        <div id="profile-login-view">
+            <div class="profile-avatar-placeholder">
+                <i class="fa-solid fa-user-circle"></i>
+            </div>
+            <p class="profile-login-prompt">Masuk untuk melihat akun & riwayat belanja Anda</p>
+            <form id="profile-login-form">
+                <div class="profile-input-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" placeholder="email@contoh.com" required>
+                </div>
+                <div class="profile-input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="profile-login-btn">Masuk</button>
+                <p class="profile-register-link">Belum punya akun? <a href="#" id="go-register">Daftar sekarang</a></p>
+            </form>
+        </div>
+
+        <!-- View: Register -->
+        <div id="profile-register-view" style="display:none;">
+            <h3 class="profile-section-title">Buat Akun Baru</h3>
+            <form id="profile-register-form">
+                <div class="profile-input-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="reg-name" placeholder="Nama kamu" required>
+                </div>
+                <div class="profile-input-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" placeholder="email@contoh.com" required>
+                </div>
+                <div class="profile-input-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" placeholder="Buat password" required>
+                </div>
+                <button type="submit" class="profile-login-btn">Daftar</button>
+                <p class="profile-register-link">Sudah punya akun? <a href="#" id="go-login">Masuk</a></p>
+            </form>
+        </div>
+
+        <!-- View: Logged In -->
+        <div id="profile-loggedin-view" style="display:none;">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="profile-user-name" id="profile-display-name">Pelanggan</div>
+            <div class="profile-user-email" id="profile-display-email">-</div>
+            <div class="profile-stats">
+                <div class="stat-box">
+                    <span class="stat-num" id="stat-orders">0</span>
+                    <span class="stat-label">Pesanan</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num" id="stat-wishlist">0</span>
+                    <span class="stat-label">Wishlist</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">⭐</span>
+                    <span class="stat-label">Member</span>
+                </div>
+            </div>
+            <div class="profile-menu">
+                <div class="profile-menu-item"><i class="fa-solid fa-box"></i> Riwayat Pesanan</div>
+                <div class="profile-menu-item"><i class="fa-solid fa-heart"></i> Wishlist Saya</div>
+                <div class="profile-menu-item"><i class="fa-solid fa-map-location-dot"></i> Alamat Pengiriman</div>
+                <div class="profile-menu-item"><i class="fa-solid fa-gear"></i> Pengaturan Akun</div>
+            </div>
+            <button class="profile-logout-btn" id="profile-logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/script.js"></script>
